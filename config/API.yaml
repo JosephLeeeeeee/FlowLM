@@ -1,0 +1,5 @@
+base_url: please enter your API url
+api_key: please enter your API key
+problem_description_file: config/problem_description.txt
+graph_description_file: config/graph_description.txt
+flow_description_file: config/flow_description.txt

@@ -1,0 +1,61 @@
+模型: gpt-5
+生成时间: 2025-09-24 14:58:35
+==================================================
+
+数据流定义
+- s=1, t=18, b=5
+
+路径与带宽分配
+- 路径: 1-14-11-19-2-18
+- 分配方式: 单路径，沿路径每条边分配5
+
+每条边初始状态与结束状态（TC=10）
+- 0-5: UC 5, RC 5 -> UC 5, RC 5; alloc 0
+- 0-6: UC 3, RC 7 -> UC 3, RC 7; alloc 0
+- 0-13: UC 4, RC 6 -> UC 4, RC 6; alloc 0
+- 1-7: UC 5, RC 5 -> UC 5, RC 5; alloc 0
+- 1-14: UC 3, RC 7 -> UC 8, RC 2; alloc 5
+- 2-5: UC 3, RC 7 -> UC 3, RC 7; alloc 0
+- 2-10: UC 4, RC 6 -> UC 4, RC 6; alloc 0
+- 2-13: UC 2, RC 8 -> UC 2, RC 8; alloc 0
+- 2-18: UC 1, RC 9 -> UC 6, RC 4; alloc 5
+- 2-19: UC 1, RC 9 -> UC 6, RC 4; alloc 5
+- 3-4: UC 5, RC 5 -> UC 5, RC 5; alloc 0
+- 3-6: UC 1, RC 9 -> UC 1, RC 9; alloc 0
+- 3-9: UC 2, RC 8 -> UC 2, RC 8; alloc 0
+- 3-13: UC 2, RC 8 -> UC 2, RC 8; alloc 0
+- 3-14: UC 4, RC 6 -> UC 4, RC 6; alloc 0
+- 3-19: UC 3, RC 7 -> UC 3, RC 7; alloc 0
+- 4-18: UC 3, RC 7 -> UC 3, RC 7; alloc 0
+- 5-11: UC 4, RC 6 -> UC 4, RC 6; alloc 0
+- 5-14: UC 5, RC 5 -> UC 5, RC 5; alloc 0
+- 5-16: UC 2, RC 8 -> UC 2, RC 8; alloc 0
+- 6-10: UC 2, RC 8 -> UC 2, RC 8; alloc 0
+- 6-12: UC 5, RC 5 -> UC 5, RC 5; alloc 0
+- 6-14: UC 2, RC 8 -> UC 2, RC 8; alloc 0
+- 6-15: UC 5, RC 5 -> UC 5, RC 5; alloc 0
+- 6-16: UC 3, RC 7 -> UC 3, RC 7; alloc 0
+- 7-15: UC 3, RC 7 -> UC 3, RC 7; alloc 0
+- 7-17: UC 3, RC 7 -> UC 3, RC 7; alloc 0
+- 7-19: UC 3, RC 7 -> UC 3, RC 7; alloc 0
+- 8-9: UC 3, RC 7 -> UC 3, RC 7; alloc 0
+- 8-10: UC 2, RC 8 -> UC 2, RC 8; alloc 0
+- 8-13: UC 2, RC 8 -> UC 2, RC 8; alloc 0
+- 8-17: UC 4, RC 6 -> UC 4, RC 6; alloc 0
+- 8-19: UC 3, RC 7 -> UC 3, RC 7; alloc 0
+- 9-16: UC 2, RC 8 -> UC 2, RC 8; alloc 0
+- 10-13: UC 1, RC 9 -> UC 1, RC 9; alloc 0
+- 10-17: UC 5, RC 5 -> UC 5, RC 5; alloc 0
+- 10-19: UC 5, RC 5 -> UC 5, RC 5; alloc 0
+- 11-14: UC 2, RC 8 -> UC 7, RC 3; alloc 5
+- 11-19: UC 3, RC 7 -> UC 8, RC 2; alloc 5
+- 12-14: UC 2, RC 8 -> UC 2, RC 8; alloc 0
+- 12-16: UC 5, RC 5 -> UC 5, RC 5; alloc 0
+- 12-18: UC 5, RC 5 -> UC 5, RC 5; alloc 0
+- 14-16: UC 4, RC 6 -> UC 4, RC 6; alloc 0
+- 14-17: UC 3, RC 7 -> UC 3, RC 7; alloc 0
+- 15-19: UC 2, RC 8 -> UC 2, RC 8; alloc 0
+- 16-19: UC 1, RC 9 -> UC 1, RC 9; alloc 0
+
+最终MLU
+- 0.8
