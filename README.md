@@ -1,6 +1,6 @@
-# HEADLM
+# FlowLM
 
-This project is similar with HEADRL, but using LLM.
+用大模型生成路由方案，验证可行性，与基线方法对比。
 
 ## 安装环境
 
