@@ -89,7 +89,7 @@ def analyze_topology(graph, name):
 def main():
     # Read all GML files
     gml_file_path = "dataset/generated"
-    gml_file_name = "W5N_20250922_170214.gml"
+    gml_file_name = "W20N_20250924_144247.gml"
     graphs = read_gml_files(gml_file_path, gml_file_name)
 
     if not graphs:

@@ -3,7 +3,7 @@ import k_shortest_paths as ks
 from generate_solution import APIClient
 import re
 
-file_path = "dataset/generated/W20N_20250924_170313.gml"
+file_path = "dataset/generated/W20N_20250924_144247.gml"
 
 client = APIClient()
 flow = client.flow_description
