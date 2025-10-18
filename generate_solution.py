@@ -4,9 +4,13 @@
 import yaml
 import requests
 import os
+import networkx as nx
+import re
 from datetime import datetime
 from typing import Dict, Any
 
+
+# from baseline import file_path
 
 def load_api_config(config_file: str = "config/API.yaml") -> Dict[str, str]:
     """从YAML文件加载API配置"""
@@ -127,13 +131,45 @@ if __name__ == "__main__":
     # 打印配置信息
     print(f"Base URL: {client.base_url}")
     print(f"API Key: {client.api_key[:10]}...")
-    print("model name:", model)
+    print("model name:", model, "\n")
+
+    from optimal_solution import OptimalSolver
+
+    file_path = "dataset/generated/W20N_20250924_144247.gml"
+    graph = nx.read_gml(file_path)
+    flow = client.flow_description
+    optimal_solution = OptimalSolver(graph)
+    start_node = re.search(r'初始点：(\d+)', flow).group(1)
+    end_node = re.search(r'终点：(\d+)', flow).group(1)
+    bandwidth = int(re.search(r'数据流待分配带宽：(\d+)', flow).group(1))
+    print(f"\033[33m开始搜索最优路径...\033[0m")
+    optimal_path, optimal_mlu, all_paths_info = optimal_solution.find_optimal_path(
+        start_node,
+        end_node,
+        bandwidth,
+        max_path_length=10  # Limit max path length to avoid long search time
+    )
+    if optimal_path is None:
+        print("No feasible path found!")
+    print("\nOptimal path (minimizing MLU):")
+    print(f"Path: {' -> '.join(map(str, optimal_path))}")
+    print(f"Path length: {len(optimal_path) - 1} hops")
+    print(f"MLU: {optimal_mlu:.1f}")
+
+    print("\n前5条最优路径:")
+    for i, (path, mlu) in enumerate(all_paths_info[:5], 1):
+        path_str = ' -> '.join(map(str, path))
+        print(f"{i}. MLU={mlu:.3f}, 路径: {path_str}")
 
     # 生成方案
     try:
         prompt = client.problem_description + client.graph_description + "4. 下面是需要分配的数据流 \n" + client.flow_description
         response = client.simple_chat(prompt, model)
-        print(f"\033[33mAI生成路由方案:\033[0m {response}")
+        print(f"\n\033[33mAI生成路由方案:\033[0m {response}")
+        promt_cal_diff = response + "请计算该方案与最优解的MLU值差异，最优解的MLU值为：" + str(
+            optimal_mlu) + "，并只返回数值差异部分。"
+        diff = client.simple_chat(promt_cal_diff, model)
+        print("\n 和最优解的MLU值相差为：", diff)
 
         # 保存结果
         saved_filepath = save_result_to_file(response, model)
