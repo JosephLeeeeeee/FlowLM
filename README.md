@@ -33,6 +33,18 @@ pip install -r requirements.txt
 选择上一个测试用例中用于生成路由方案的gml网络拓扑文件，复制到 `baseline.py` 中的 `file_path`，
 运行 `python baseline.py`，得到baseline生成的路径和MLU。运行 `python generate_solution.py`，得到LLM生成的路径和MLU。
 
+## 接口
+
+输入接口：
+
+1. model：调用的大模型，主流大模型均可以选择
+2. node：网络拓扑节点数量
+3. flow_description：数据流需求文件，包括起始点、终点和待分配带宽
+
+输出接口：
+
+1. generated_solution：生成的路由方案文件，包括预训练大模型和最优解求解器输出的路由方案和MLU比较
+
 ## 其他
 
 `python read_data.py` 可以指定生成gml文件对应的图，`python k_shortest_paths.py` 可以测试baseline生成效果。
