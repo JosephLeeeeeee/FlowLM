@@ -6,8 +6,9 @@ import requests
 import os
 import networkx as nx
 import re
+import json
 from datetime import datetime
-from typing import Dict, Any
+from typing import Dict, Any, Generator
 
 
 # from baseline import file_path
@@ -86,7 +87,7 @@ class APIClient:
                 url,
                 json=payload,
                 headers=self.get_headers(),
-                timeout=300
+                timeout=3000
             )
             response.raise_for_status()
             return response.json()
@@ -125,7 +126,6 @@ def save_result_to_file(content: str, model_name: str) -> str:
 
 # 使用示例
 if __name__ == "__main__":
-    # 创建API客户端
     client = APIClient()
     model = "gpt-5"
     # 打印配置信息
@@ -173,7 +173,8 @@ if __name__ == "__main__":
 
         # 保存结果
         saved_filepath = save_result_to_file(response, model)
-        print(f"\n结果已保存到: {saved_filepath}")
+        # Don't need to print
+        # print(f"\n结果已保存到: {saved_filepath}")
 
     except Exception as e:
         print(f"错误: {e}")
